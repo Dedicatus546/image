@@ -29,7 +29,6 @@ const insertDB = async (dir) => {
         name: p,
       });
       db.total++;
-      console.log(db);
     }
   }
 };
@@ -40,5 +39,5 @@ const updateDB = async () => {
 
 await createDBFile();
 await insertDB(".");
-console.log(db);
+db.list = db.list.reverse();
 await updateDB();
