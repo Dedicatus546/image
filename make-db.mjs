@@ -23,7 +23,7 @@ const insertDB = async (dir) => {
     if (stat.isDirectory() && /\d+/g.test(p)) {
       const nextDir = path.join(dir, p);
       await insertDB(nextDir);
-    } else if (/^\d{15}\..*$/g.test(p)) {
+    } else if (/^\d{15,17}\..*$/g.test(p)) {
       db.list.push({
         path: path.join(dir, p),
         name: p,
@@ -34,7 +34,7 @@ const insertDB = async (dir) => {
 };
 
 const updateDB = async () => {
-  await fs.writeFile("db.json", JSON.stringify(db));
+  await fs.writeFile("db.json", JSON.stringify(db, undefined, 2));
 };
 
 await createDBFile();
