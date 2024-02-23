@@ -11,10 +11,7 @@ const createDBFile = async () => {
   );
 };
 
-const db = {
-  list: [],
-  total: 0,
-};
+const db = [];
 
 const insertDB = async (dir) => {
   const pathList = await fs.readdir(dir);
@@ -24,11 +21,10 @@ const insertDB = async (dir) => {
       const nextDir = path.join(dir, p);
       await insertDB(nextDir);
     } else if (/^\d{15,17}\..*$/g.test(p)) {
-      db.list.push({
+      db.push({
         path: path.join(dir, p),
         name: p,
       });
-      db.total++;
     }
   }
 };
@@ -39,5 +35,5 @@ const updateDB = async () => {
 
 await createDBFile();
 await insertDB(".");
-db.list = db.list.reverse();
+db.list = db.reverse();
 await updateDB();
