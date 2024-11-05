@@ -1,0 +1,17 @@
+{
+  "name": "image",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./make-db.mjs",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "make-db": "node ./make-db.js"
+  },
+  "packageManager": "pnpm@9.12.3",
+  "devDependencies": {
+    "@types/node": "^22.9.0"
+  }
+}
